@@ -58,7 +58,7 @@ module Sharepoint
     def form_digest
       if @web_context.nil? or (not @web_context.is_up_to_date?)
         @getting_form_digest = true
-        @web_context         = query :post, "#{@protocol}://#{@server_url}/_api/contextinfo"
+        @web_context         = query :post, "#{@protocol}://#{@url}/_api/contextinfo"
         @getting_form_digest = false
       end
       @web_context.form_digest_value
@@ -73,7 +73,7 @@ module Sharepoint
         curl.headers["Accept"]          = "application/json;odata=verbose"
         if method != :get
           curl.headers["Content-Type"]    = curl.headers["Accept"]
-          curl.headers["X-RequestDigest"] = form_digest unless @getting_form_digest == true
+          curl.headers["Authorization"] = "Bearer " + form_digest unless @getting_form_digest == true
         end
         curl.verbose = @verbose
         @session.send :curl, curl unless not @session.methods.include? :curl
