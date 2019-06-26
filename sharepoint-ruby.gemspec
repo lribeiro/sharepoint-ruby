@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name         = 'sharepoint-ruby'
-  s.version      = '0.2.1'
-  s.date         = '2018-07-24'
+  s.version      = '0.2.2'
+  s.date         = '2019-06-26'
   s.summary      = 'sharepoint client'
   s.description  = "Client for Sharepoint's REST API"
   s.authors      = ["Michael Martin Moro"]
@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
                     'lib/sharepoint-http-auth.rb',
                     'lib/sharepoint-kerberos-auth.rb']
   s.homepage     = 'https://github.com/Plaristote/sharepoint-ruby'
-  s.license      = 'BSD'
+  s.license      = 'BSD-3-Clause'
   s.require_path = 'lib'
 
-  s.add_runtime_dependency 'curb', '~> 0.8', '<= 0.8.6'
+  s.add_runtime_dependency 'curb', '~> 0.9'
 end
